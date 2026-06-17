@@ -1,0 +1,75 @@
+.showCard {
+  width: 100%;
+  height: 100%;
+  background-color: var(--gray8);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.showCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.posterWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: var(--gray6);
+}
+
+.posterImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seatBadge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background-color: rgba(16, 20, 35, 0.85);
+  color: var(--gray8);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+
+.showInfo {
+  padding: 16px;
+}
+
+.showTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.showDetail {
+  font-size: 0.85rem;
+  color: var(--gray2);
+  margin-bottom: 2px;
+}
+
+.showDate {
+  font-size: 0.8rem;
+  color: var(--gray4);
+}
+
+.myDateText {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray2);
+}

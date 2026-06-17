@@ -1,8 +1,8 @@
 .mainContainer {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: calc(var(--header-height) + 40px) 20px 80px 20px;
+  padding: calc(var(--header-height) + 40px) 20px 160px 20px;
 }
 
 .section {
@@ -26,199 +26,25 @@
   color: var(--gray3);
 }
 
-.sliderContainer {
+.sliderWrapper {
   width: 100%;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.sliderContainer::-webkit-scrollbar {
-  display: none;
-}
-
-.sliderRow {
-  display: flex;
-  gap: 20px;
-  padding-bottom: 10px;
-}
-
-.showCard {
-  flex: 0 0 220px;
-  background-color: var(--gray8);
-  border-radius: 12px;
+  margin: -10px;
+  padding: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-  transition: transform var(--transition);
 }
 
-.showCard:hover {
-  transform: translateY(-5px);
-}
-
-.posterWrapper {
-  position: relative;
+.swiperContainer {
   width: 100%;
-  height: 210px !important;
-  background-color: var(--gray6);
+  overflow: visible !important;
 }
 
-.posterImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.seatBadge {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  background-color: rgba(16, 20, 35, 0.85);
-  color: var(--gray8);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  backdrop-filter: blur(4px);
-}
-
-.showInfo {
-  padding: 16px;
-}
-
-.showTitle {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin-bottom: 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.showDetail {
-  font-size: 0.85rem;
-  color: var(--gray2);
-  margin-bottom: 2px;
-}
-
-.showDate {
-  font-size: 0.8rem;
-  color: var(--gray4);
-}
-
-.myDateText {
-  display: flex;
-  align-items: center;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--gray2);
-}
-
-.todayGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 20px;
-}
-
-.todayCard {
-  background-color: var(--gray8);
-  border: 1px solid var(--gray6);
-  border-radius: 14px;
-  padding: 24px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.todayCardHeader {
-  border-bottom: 1px solid var(--gray7);
-  padding-bottom: 14px;
-  margin-bottom: 16px;
-}
-
-.todayShowTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 4px;
-}
-
-.todayLocation {
-  font-size: 0.9rem;
-  color: var(--gray3);
-}
-
-.todayCardBody {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.timeMeta {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-  color: var(--gray1);
-  font-weight: 500;
-}
-
-.metaIcon {
-  margin-right: 8px;
-  color: var(--gray3);
-}
-
-.castContainer {
-  background-color: var(--bg);
-  padding: 14px;
-  border-radius: 10px;
-}
-
-.castTitleRow {
-  display: flex;
-  align-items: center;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  color: var(--gray3);
-  font-weight: 600;
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
-}
-
-.castTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.castTag {
-  background-color: var(--gray8);
-  color: var(--primary);
-  border: 1px solid var(--gray6);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.88rem;
-  font-weight: 500;
+.swiperSlide {
+  height: auto;
 }
 
 @media (max-width: 768px) {
   .mainContainer {
     padding-top: calc(var(--header-height) + 20px);
-  }
-
-  .todayGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .showCard {
-    flex: 0 0 180px;
-  }
-
-  .posterWrapper {
-    height: 180px !important;
+    padding-bottom: 120px;
   }
 }

@@ -214,7 +214,7 @@
 ========================= */
 
 @media (max-width: 768px) {
-  :local {
+  :root {
     --header-height: 70px;
   }
 
@@ -237,7 +237,7 @@
 ========================= */
 
 @media (max-width: 480px) {
-  :local {
+  :root {
     --header-height: 64px;
   }
 

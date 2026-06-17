@@ -17,7 +17,7 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # 임시 파일 업로드 디렉토리
-RUN mkdir -p /tmp/uploads/web/matgot
+RUN mkdir -p /tmp/uploads/web/flot
 
 COPY --from=builder /app/build/libs/*.jar app.jar
 

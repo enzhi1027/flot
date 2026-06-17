@@ -1,13 +1,13 @@
-package com.performance.flot.flot_back;
+package com.performance.flot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class flotBackApplication {
+public class FlotBackApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(flotBackApplication.class, args);
+		SpringApplication.run(FlotBackApplication.class, args);
 	}
 
 }

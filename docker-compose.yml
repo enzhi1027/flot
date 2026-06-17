@@ -2,9 +2,9 @@ services:
   # ── Backend (Spring Boot) ────────────────────────────────────────────────
   backend:
     build:
-      context: ./flat_back
+      context: ./flot_back
       dockerfile: Dockerfile
-    container_name: flat-backend
+    container_name: flot-backend
     restart: unless-stopped
     ports:
       - "9992:9999"
@@ -42,15 +42,15 @@ services:
       CLOUD_AWS_S3_BUCKET: ${S3_BUCKET}
 
       # 파일 업로드 임시 경로 (Linux 컨테이너용)
-      FILE_ROOT: /tmp/uploads/web/flat/
+      FILE_ROOT: /tmp/uploads/web/flot/
 
     networks:
-      - flat-net
+      - flot-net
 
   # ── Frontend (React + Nginx) ─────────────────────────────────────────────
   frontend:
     build:
-      context: ./flat_front
+      context: ./flot_front
       dockerfile: Dockerfile
       args:
         VITE_BACKSERVER: ${VITE_BACKSERVER}
@@ -65,15 +65,15 @@ services:
         VITE_IMG_SERVER: ${VITE_IMG_SERVER}
         VITE_TMAP_APP_KEY: ${VITE_TMAP_APP_KEY}
         VITE_ODSAY_API_KEY: ${VITE_ODSAY_API_KEY}
-    container_name: flat-frontend
+    container_name: flot-frontend
     restart: unless-stopped
     ports:
       - "8082:80"
     depends_on:
       - backend
     networks:
-      - flat-net
+      - flot-net
 
 networks:
-  flat-net:
+  flot-net:
     driver: bridge

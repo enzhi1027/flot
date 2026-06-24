@@ -12,9 +12,10 @@ import styles from "./CalendarMain.module.css";
 const CalendarMain = () => {
   const [activeTab, setActiveTab] = useState("mine");
 
-  const [selectedActor, setSelectedActor] = useState(
+  // 1. 애배 다중 선택을 위해 배열 형태로 변경 (초기값 첫 번째 배우 선택)
+  const [selectedActors, setSelectedActors] = useState([
     favoriteActors[0]?.id || "",
-  );
+  ]);
   const [selectedShow, setSelectedShow] = useState(favoriteShows[0]?.id || "");
 
   const [showMyScheduleWithFriend, setShowMyScheduleWithFriend] =
@@ -23,6 +24,17 @@ const CalendarMain = () => {
   const [friendMixSelected, setFriendMixSelected] = useState([
     myFriends[0]?.id || "",
   ]);
+
+  // 애배 다중 토글 핸들러 (최소 1명 유지)
+  const handleActorToggle = (id) => {
+    setSelectedActors((prev) =>
+      prev.includes(id)
+        ? prev.length === 1
+          ? prev
+          : prev.filter((i) => i !== id)
+        : [...prev, id],
+    );
+  };
 
   const handleFriendMixToggle = (id) => {
     setFriendMixSelected((prev) =>
@@ -45,15 +57,19 @@ const CalendarMain = () => {
       ownerId: "me",
     }));
   } else if (activeTab === "actor") {
-    const actorObj = favoriteActors.find((a) => a.id === selectedActor);
-    currentDisplayData = actorObj
-      ? actorObj.castings.map((c) => ({
-          ...c,
-          dataType: "actor_cast",
-          ownerId: selectedActor,
-          title: c.showName,
-        }))
-      : [];
+    // 2. 선택된 모든 배우의 스케줄을 루프 돌며 겹쳐보도록 합산
+    favoriteActors.forEach((actor) => {
+      if (selectedActors.includes(actor.id)) {
+        currentDisplayData.push(
+          ...actor.castings.map((c) => ({
+            ...c,
+            dataType: "actor_cast",
+            ownerId: actor.id,
+            title: c.showName,
+          })),
+        );
+      }
+    });
   } else if (activeTab === "friend") {
     if (showMyScheduleWithFriend) {
       currentDisplayData.push(
@@ -90,7 +106,7 @@ const CalendarMain = () => {
           { id: "mine", label: "MY" },
           { id: "show", label: "애정극" },
           { id: "actor", label: "애배" },
-          { id: "friend", label: "친구 일정" },
+          { id: "friend", label: "친구" },
         ].map((tab) => (
           <div
             key={tab.id}
@@ -114,12 +130,13 @@ const CalendarMain = () => {
             <div
               className={`${styles.sidebarList} ${activeTab === "friend" ? styles.scrollableList : ""}`}
             >
+              {/* 애배 다중 선택 활성화 */}
               {activeTab === "actor" &&
                 favoriteActors.map((a) => (
                   <button
                     key={a.id}
-                    className={`${styles.rowBtn} ${selectedActor === a.id ? styles.activeRow : ""}`}
-                    onClick={() => setSelectedActor(a.id)}
+                    className={`${styles.rowBtn} ${selectedActors.includes(a.id) ? styles.activeRow : ""}`}
+                    onClick={() => handleActorToggle(a.id)}
                   >
                     <span
                       className={styles.colorCircle}
@@ -140,23 +157,20 @@ const CalendarMain = () => {
                   </button>
                 ))}
 
+              {/* 친구 목록: 지저분한 체크박스 input을 제거하고 button 타입의 액티브로 통일 */}
               {activeTab === "friend" &&
                 myFriends.map((f) => (
-                  <label
+                  <button
                     key={f.id}
-                    className={`${styles.checkRow} ${friendMixSelected.includes(f.id) ? styles.activeCheck : ""}`}
+                    className={`${styles.rowBtn} ${friendMixSelected.includes(f.id) ? styles.activeRow : ""}`}
+                    onClick={() => handleFriendMixToggle(f.id)}
                   >
-                    <input
-                      type="checkbox"
-                      checked={friendMixSelected.includes(f.id)}
-                      onChange={() => handleFriendMixToggle(f.id)}
-                    />
                     <span
                       className={styles.colorCircle}
                       style={{ backgroundColor: getPersonColor(f.id).bg }}
                     />
-                    <span>{f.name}</span>
-                  </label>
+                    {f.name}
+                  </button>
                 ))}
             </div>
 

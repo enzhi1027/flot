@@ -1,0 +1,59 @@
+.cardContainer {
+  background-color: var(--gray8);
+  border: 1px solid var(--gray6);
+  border-radius: 16px;
+  padding: 24px;
+}
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.sectionTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.clearAllButton {
+  background: none;
+  border: none;
+  color: var(--gray3);
+  font-size: 0.825rem;
+  cursor: pointer;
+}
+.noDataView {
+  text-align: center;
+  padding: 80px 0;
+  color: var(--gray3);
+  font-size: 0.9rem;
+}
+.recentList {
+  display: flex;
+  flex-direction: column;
+}
+.recentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 4px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--bg);
+}
+.recentLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--primary);
+}
+.clockIcon {
+  color: var(--gray3);
+}
+.removeButton {
+  background: none;
+  border: none;
+  color: var(--gray4);
+  cursor: pointer;
+  padding: 4px;
+}

@@ -1,0 +1,123 @@
+.resultSection {
+  width: 100%;
+}
+.sectionHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.sectionTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.moreButton {
+  background: none;
+  border: none;
+  color: var(--gray3);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.showResultList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.showItemRow {
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--gray7);
+  border-radius: 12px;
+  position: relative;
+  background-color: var(--gray8);
+}
+.showMetaInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.titleBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.showMetaType {
+  font-size: 0.75rem;
+  color: var(--gray3);
+}
+.showMetaTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.metaText {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--gray2);
+  margin-bottom: 2px;
+}
+.metaCasts {
+  font-size: 0.825rem;
+  color: var(--gray1);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.statusBadge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+.badgeEnd,
+.badgeIng,
+.badgeWill {
+  color: #ffffff;
+}
+.badgeEnd {
+  background-color: #4a5568;
+  border-color: #3a4352;
+}
+.badgeIng {
+  background-color: #e9c46a;
+  border-color: #d4af57;
+}
+.badgeWill {
+  background-color: #8ab17d;
+  border-color: #769a69;
+}
+
+.paginationBarMock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: var(--bg);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--gray2);
+}
+
+@media (max-width: 600px) {
+  .typeStatusTag,
+  .statusBadge {
+    position: relative;
+    top: auto;
+    right: auto;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+}

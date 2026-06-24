@@ -1,0 +1,252 @@
+.wrapper {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #edf2f7;
+  justify-content: center;
+}
+.navArrow {
+  background: none;
+  border: none;
+  transform: scale(0.75);
+  cursor: pointer;
+  color: #4a5568;
+  display: flex;
+  justify-content: center;
+}
+.title {
+  font-weight: bold;
+  font-size: 16px;
+  align-content: center;
+}
+.weekHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #f7fafc;
+  border-bottom: 1px solid #edf2f7;
+}
+.weekCell {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #718096;
+}
+.sun {
+  color: #e53e3e;
+}
+.sat {
+  color: #3182ce;
+}
+
+.dayGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #edf2f7;
+  gap: 1px;
+}
+
+.dayCell {
+  min-height: 110px;
+  background: #ffffff;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+.otherMonth {
+  opacity: 0.35;
+}
+.dayNum {
+  font-size: 11px;
+  font-weight: bold;
+}
+.today {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray8);
+  background-color: var(--primary);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: bold;
+}
+.itemLayer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.playItemBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: hidden;
+}
+.playEventBadge {
+  background: #ffe4e6;
+  color: #9f1239;
+  font-size: 8px;
+  font-weight: bold;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+.playCastRow {
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  overflow: hidden;
+}
+.playTime {
+  font-weight: bold;
+  color: #2d3748;
+}
+.playActors {
+  color: #718096;
+  padding-left: 4px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  white-space: normal;
+  word-break: keep-all;
+  line-height: 1.25;
+}
+
+.cleanBlockBadge {
+  padding: 2px 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.cleanBlockTime {
+  font-size: 9px;
+  font-weight: 600;
+  display: block;
+}
+
+.blockTitle {
+  font-size: 9.5px;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal !important;
+  word-break: break-all;
+
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+.pendingItem {
+  opacity: 0.45;
+  border: 1px dashed rgba(255, 255, 255, 0.6);
+}
+.pendingTag {
+  color: #ff6b6b;
+  font-weight: bold;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modalContent {
+  background: #fff;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 10px;
+  padding: 20px;
+}
+.modalTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modalDateInfo {
+  font-size: 11px;
+  color: #a0aec0;
+}
+.closeX {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #a0aec0;
+}
+.modalMainTitle {
+  font-size: 15px;
+  font-weight: bold;
+  color: #1a202c;
+  margin: 6px 0;
+}
+.modalContent hr {
+  border: none;
+  height: 1px;
+  background: #e2e8f0;
+  margin-bottom: 12px;
+}
+.modalTable {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+.modalRow {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 4px;
+}
+.fixedKey {
+  width: 60px;
+  color: #718096;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.modalRow strong {
+  color: #2d3748;
+  font-weight: 600;
+  flex: 1;
+  word-break: break-all;
+}
+.memoText {
+  flex: 1;
+  background: #f7fafc;
+  padding: 6px;
+  border-radius: 4px;
+  color: #4a5568;
+  margin: 0;
+  line-height: 1.3;
+}

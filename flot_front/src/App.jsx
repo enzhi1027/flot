@@ -3,6 +3,8 @@ import "./App.css";
 import Main from "./pages/main/Main";
 import Header from "./components/commons/Header";
 import Footer from "./components/commons/Footer";
+import SearchPage from "./pages/search/SearchPage";
+import CalendarMain from "./pages/calender/CalenderMain";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Routes>
           {/* <Route path="/" element={token ? <Main_login /> : <Main />} /> */}
           <Route path="/" element={<Main />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/calendar" element={<CalendarMain />}></Route>
         </Routes>
       </div>
       <Footer />

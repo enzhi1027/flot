@@ -1,0 +1,119 @@
+.resultSection {
+  width: 100%;
+}
+.sectionHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.sectionTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.moreButton {
+  background: none;
+  border: none;
+  color: var(--gray3);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.actorGridRow,
+.actorGridInfinite {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.actorCard {
+  border: 1px solid var(--gray7);
+  border-radius: 12px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--gray8);
+}
+.actorProfilePlaceholder {
+  width: 100%;
+  aspect-ratio: 5 / 4.5;
+  background-color: var(--gray6);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.actorName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+  text-align: left;
+  width: 100%;
+}
+.actorFilmoList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.filmoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 28px;
+}
+.filmoRow > span {
+  bottom: 0;
+  right: 0;
+  padding: 1px 4px;
+  font-size: 0.62rem;
+  align-content: center;
+  font-weight: 500;
+}
+.filmoLeft {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  margin-right: 4px;
+}
+.filmoTypeLabel {
+  font-size: 0.65rem;
+  color: var(--gray3);
+  line-height: 1.2;
+}
+.filmoTitle {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:local(.statusBadge) {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  font-size: 0.68rem !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  flex-shrink: 0;
+}
+
+.infiniteScrollTriggerMock {
+  text-align: center;
+  padding: 24px;
+  color: var(--gray3);
+  font-size: 0.8rem;
+  margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+  .actorGridRow,
+  .actorGridInfinite {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

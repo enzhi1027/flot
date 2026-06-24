@@ -192,7 +192,7 @@
 
 .castContainer {
   background-color: var(--bg);
-  padding: 14px;
+  padding: 12px;
   border-radius: 10px;
 }
 
@@ -210,17 +210,22 @@
 .castTags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
 }
 
 .castTag {
   background-color: var(--gray8);
   color: var(--primary);
   border: 1px solid var(--gray6);
-  padding: 6px 12px;
+  padding: 5px 10px;
   border-radius: 6px;
   font-size: 0.88rem;
   font-weight: 500;
+  margin-right: 7.5px;
+  margin-bottom: 4px;
+}
+
+.castTag:nth-child(4n) {
+  margin-right: 0;
 }
 
 .timelineContainer {

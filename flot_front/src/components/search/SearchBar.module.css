@@ -1,0 +1,27 @@
+.searchBarForm {
+  margin-bottom: 16px;
+}
+.searchBarWrapper {
+  position: relative;
+  width: 100%;
+}
+.searchInput {
+  width: 100%;
+  padding: 14px 50px 14px 20px;
+  font-size: 1rem;
+  border-radius: 30px;
+  border: 1px solid var(--gray6);
+  background-color: var(--gray8);
+  color: var(--primary);
+  outline: none;
+}
+.searchButton {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+}

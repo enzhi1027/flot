@@ -51,22 +51,13 @@
   object-fit: contain;
 }
 
-/* =========================
-   Hamburger
-========================= */
-
 .hamburgerBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 8px;
-
   border: none;
   background: none;
-
   cursor: pointer;
-
   z-index: 1002;
 }
 

@@ -20,11 +20,12 @@
   cursor: pointer;
 }
 
+/* 💻 데스크톱 화면: 한줄에 4명씩 */
 .actorGridRow,
 .actorGridInfinite {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 16px;
 }
 .actorCard {
   border: 1px solid var(--gray7);
@@ -32,21 +33,29 @@
   padding: 16px 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: var(--gray8);
+  box-sizing: border-box;
+  min-width: 0;
 }
 .actorProfilePlaceholder {
   width: 100%;
-  aspect-ratio: 5 / 4.5;
+  aspect-ratio: 1 / 1;
   background-color: var(--gray6);
   border-radius: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+.actorInfoWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 .actorName {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 8px;
+  margin: 0 0 12px 0;
   text-align: left;
   width: 100%;
 }
@@ -54,30 +63,20 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 .filmoRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   width: 100%;
-  min-height: 28px;
-}
-.filmoRow > span {
-  bottom: 0;
-  right: 0;
-  padding: 1px 4px;
-  font-size: 0.62rem;
-  align-content: center;
-  font-weight: 500;
+  gap: 8px;
 }
 .filmoLeft {
   display: flex;
   flex-direction: column;
   flex: 1;
   min-width: 0;
-  margin-right: 4px;
 }
 .filmoTypeLabel {
   font-size: 0.65rem;
@@ -90,17 +89,18 @@
   color: var(--primary);
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; /* 💥 겹치면 자동으로 ... 처리 */
+  width: 100%;
 }
 
-:local(.statusBadge) {
+/* 💡 [해결 책] StatusBadge 컴포넌트 내부의 CSS 클래스를 안전하게 주입 및 고정 */
+.filmoRow [class*="statusBadge"] {
   position: relative !important;
   top: auto !important;
   right: auto !important;
-  font-size: 0.68rem !important;
-  padding: 2px 6px !important;
-  border-radius: 4px !important;
-  flex-shrink: 0;
+  flex-shrink: 0 !important; /* 글자가 길어져도 절대 찌그러지거나 숨지 않음 */
+  display: inline-block;
+  text-align: center;
 }
 
 .infiniteScrollTriggerMock {
@@ -111,9 +111,28 @@
   margin-top: 16px;
 }
 
-@media (max-width: 600px) {
+/* 📱 반응형(모바일) 화면: 한줄에 한명씩 리스트처럼 */
+@media (max-width: 768px) {
   .actorGridRow,
   .actorGridInfinite {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .actorCard {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px;
+  }
+
+  .actorProfilePlaceholder {
+    width: 85px;
+    height: 85px;
+    margin-bottom: 0;
+  }
+
+  .actorName {
+    margin: 0 0 8px 0;
   }
 }

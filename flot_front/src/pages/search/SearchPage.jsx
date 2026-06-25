@@ -5,127 +5,63 @@ import RecentSearches from "../../components/search/RecentSearches";
 import ShowResultSection from "../../components/search/ShowResultSection";
 import ActorResultSection from "../../components/search/ActorResultSection";
 
-const DUMMY_RECENT = [
-  "나르치스와 골드문트",
-  "베르테르",
-  "히스토리 보이즈",
-  "미오 프라텔로",
-];
-
-const DUMMY_SHOWS = [
-  {
-    id: 1,
-    title: "제목 1",
-    type: 1,
-    period: "2026.01.01 ~ 2026.04.15",
-    place: "광림아트센터 BBCH홀",
-    casts: ["배우A", "배우B", "배우C"],
-  },
-  {
-    id: 2,
-    title: "오프닝 나이트",
-    type: 2,
-    period: "2026.05.01 ~ 2026.07.26",
-    place: "대학로 자유극장",
-    casts: ["배우D", "배우E"],
-  },
-  {
-    id: 3,
-    title: "제목 3",
-    type: 1,
-    period: "2026.08.10 ~ 2026.10.15",
-    place: "예술의전당",
-    casts: ["배우F", "배우G"],
-  },
-  {
-    id: 4,
-    title: "제목 4",
-    type: 2,
-    period: "2026.09.01 ~ 2026.11.30",
-    place: "콘텐츠박스",
-    casts: ["배우H", "배우I"],
-  },
-];
-
-const DUMMY_ACTORS = [
-  {
-    id: 1,
-    name: "이름 1",
-    works: [
-      {
-        id: 10,
-        title: "필모 1",
-        type: 1,
-        period: "2026.01.01 ~ 2026.04.15",
-      },
-      {
-        id: 11,
-        title: "필모 2",
-        type: 1,
-        period: "2026.05.01 ~ 2026.07.26",
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: "이름 2",
-    works: [
-      {
-        id: 20,
-        title: "필모 1",
-        type: 1,
-        period: "2026.01.01 ~ 2026.04.15",
-      },
-      {
-        id: 21,
-        title: "필모 2",
-        type: 2,
-        period: "2026.08.10 ~ 2026.10.15",
-      },
-    ],
-  },
-  {
-    id: 3,
-    name: "이름 3",
-    works: [
-      {
-        id: 30,
-        title: "필모 1",
-        type: 1,
-        period: "2026.05.01 ~ 2026.07.26",
-      },
-    ],
-  },
-  {
-    id: 4,
-    name: "이름 4",
-    works: [
-      {
-        id: 40,
-        title: "필모 1",
-        type: 2,
-        period: "2026.09.01 ~ 2026.11.30",
-      },
-    ],
-  },
-];
+import {
+  DUMMY_SHOWS,
+  DUMMY_ACTORS,
+  INITIAL_RECENT,
+} from "../../components/search/searchMockData";
 
 const SearchPage = () => {
   const [keyword, setKeyword] = useState("");
-  const [recentSearches, setRecentSearches] = useState(DUMMY_RECENT);
+  const [recentSearches, setRecentSearches] = useState(INITIAL_RECENT);
   const [viewMode, setViewMode] = useState("default");
   const [activeTab, setActiveTab] = useState("show");
 
-  const handleSearch = (e) => {
+  const [filteredShows, setFilteredShows] = useState([]);
+  const [filteredActors, setFilteredActors] = useState([]);
+
+  const executeSearch = (searchWord) => {
+    const trimmed = searchWord.trim();
+    if (!trimmed) return;
+
+    const lowerWord = trimmed.toLowerCase();
+
+    const showsResult = DUMMY_SHOWS.filter(
+      (show) =>
+        show.title.toLowerCase().includes(lowerWord) ||
+        show.castingRoles.some((roleGroup) =>
+          roleGroup.actors.some((actor) =>
+            actor.toLowerCase().includes(lowerWord),
+          ),
+        ),
+    );
+
+    const actorsResult = DUMMY_ACTORS.filter((actor) =>
+      actor.name.toLowerCase().includes(lowerWord),
+    );
+
+    setFilteredShows(showsResult);
+    setFilteredActors(actorsResult);
+    setViewMode("result");
+  };
+
+  const handleSearchSubmit = (e) => {
     if (e) e.preventDefault();
     if (!keyword.trim()) return;
+
     setRecentSearches((prev) =>
       [keyword.trim(), ...prev.filter((i) => i !== keyword.trim())].slice(
         0,
         10,
       ),
     );
-    setViewMode("result");
+
+    executeSearch(keyword);
+  };
+
+  const handleRecentKeywordClick = (text) => {
+    setKeyword(text);
+    executeSearch(text);
   };
 
   return (
@@ -133,9 +69,10 @@ const SearchPage = () => {
       <SearchBar
         keyword={keyword}
         setKeyword={setKeyword}
-        onSearch={handleSearch}
+        onSearch={handleSearchSubmit}
       />
 
+      {/* 기본 화면 */}
       {viewMode === "default" && (
         <RecentSearches
           recentSearches={recentSearches}
@@ -143,35 +80,51 @@ const SearchPage = () => {
           onRemove={(item) =>
             setRecentSearches((prev) => prev.filter((i) => i !== item))
           }
-          onRecentClick={(text) => {
-            setKeyword(text);
-            setViewMode("result");
-          }}
+          onRecentClick={handleRecentKeywordClick}
         />
       )}
 
+      {/* 결과 화면: 데이터 유무에 따른 조건부 렌더링 ⚙️ */}
       {viewMode === "result" && (
         <div className={styles.cardContainer}>
-          <ShowResultSection
-            shows={DUMMY_SHOWS.slice(0, 3)}
-            isMoreView={false}
-            onMoreClick={() => {
-              setViewMode("more_show");
-              setActiveTab("show");
-            }}
-          />
-          <div style={{ marginTop: "32px" }} />
-          <ActorResultSection
-            actors={DUMMY_ACTORS.slice(0, 4)}
-            isMoreView={false}
-            onMoreClick={() => {
-              setViewMode("more_actor");
-              setActiveTab("actor");
-            }}
-          />
+          {filteredShows.length === 0 && filteredActors.length === 0 ? (
+            /* 1번 요구사항: 둘 다 없을 때 */
+            <div className={styles.noResult}>검색 결과가 없습니다.</div>
+          ) : (
+            <>
+              {/* 극 결과가 있을 때만 노출 */}
+              {filteredShows.length > 0 && (
+                <ShowResultSection
+                  shows={filteredShows.slice(0, 3)}
+                  isMoreView={false}
+                  onMoreClick={() => {
+                    setViewMode("more_show");
+                    setActiveTab("show");
+                  }}
+                />
+              )}
+
+              {filteredShows.length > 0 && filteredActors.length > 0 && (
+                <div style={{ marginTop: "32px" }} />
+              )}
+
+              {/* 배우 결과가 있을 때만 노출 */}
+              {filteredActors.length > 0 && (
+                <ActorResultSection
+                  actors={filteredActors.slice(0, 4)}
+                  isMoreView={false}
+                  onMoreClick={() => {
+                    setViewMode("more_actor");
+                    setActiveTab("actor");
+                  }}
+                />
+              )}
+            </>
+          )}
         </div>
       )}
 
+      {/* 더보기 화면 */}
       {(viewMode === "more_show" || viewMode === "more_actor") && (
         <div className={styles.cardContainer}>
           <div className={styles.tabHeaderSwitcher}>
@@ -182,7 +135,7 @@ const SearchPage = () => {
                 setViewMode("more_show");
               }}
             >
-              극
+              극 ({filteredShows.length})
             </button>
             <button
               className={`${styles.switchTabBtn} ${activeTab === "actor" ? styles.activeTabBtn : ""}`}
@@ -191,15 +144,15 @@ const SearchPage = () => {
                 setViewMode("more_actor");
               }}
             >
-              배우
+              배우 ({filteredActors.length})
             </button>
           </div>
 
           {viewMode === "more_show" && (
-            <ShowResultSection shows={DUMMY_SHOWS} isMoreView={true} />
+            <ShowResultSection shows={filteredShows} isMoreView={true} />
           )}
           {viewMode === "more_actor" && (
-            <ActorResultSection actors={DUMMY_ACTORS} isMoreView={true} />
+            <ActorResultSection actors={filteredActors} isMoreView={true} />
           )}
 
           <button

@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { StatusBadge } from "./StatusBadge";
 import styles from "./ActorResultSection.module.css";
 
 const ActorResultSection = ({ actors, isMoreView, onMoreClick }) => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.resultSection}>
       {!isMoreView && (
@@ -17,25 +20,40 @@ const ActorResultSection = ({ actors, isMoreView, onMoreClick }) => {
       <div
         className={isMoreView ? styles.actorGridInfinite : styles.actorGridRow}
       >
-        {actors.map((actor) => (
-          <div key={actor.id} className={styles.actorCard}>
-            <div className={styles.actorProfilePlaceholder} />
-            <h4 className={styles.actorName}>{actor.name}</h4>
-            <div className={styles.actorFilmoList}>
-              {actor.works.map((w) => (
-                <div key={w.id} className={styles.filmoRow}>
-                  <div className={styles.filmoLeft}>
-                    <span className={styles.filmoTypeLabel}>
-                      {w.type === 1 ? "뮤지컬" : "연극"}
-                    </span>
-                    <span className={styles.filmoTitle}>{w.title}</span>
-                  </div>
-                  <StatusBadge period={w.period} />
+        {actors.map((actor) => {
+          const sortedLatestWorks = [...actor.works]
+            .sort((a, b) => b.period.localeCompare(a.period))
+            .slice(0, 2);
+
+          return (
+            <div
+              key={actor.id}
+              className={styles.actorCard}
+              onClick={() => navigate(`/search/actors/${actor.name}`)}
+              style={{ cursor: "pointer" }}
+            >
+              <div className={styles.actorProfilePlaceholder} />
+              <div className={styles.actorInfoWrapper}>
+                <h4 className={styles.actorName}>{actor.name}</h4>
+
+                <div className={styles.actorFilmoList}>
+                  {sortedLatestWorks.map((w) => (
+                    <div key={w.id} className={styles.filmoRow}>
+                      <div className={styles.filmoLeft}>
+                        <span className={styles.filmoTypeLabel}>
+                          {w.type === 1 ? "뮤지컬" : "연극"}
+                        </span>
+                        {/* 💡 요청 사항 3: 배역 제거 및 순수 작품명만 노출 */}
+                        <span className={styles.filmoTitle}>{w.title}</span>
+                      </div>
+                      <StatusBadge period={w.period} />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {isMoreView && (

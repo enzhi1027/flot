@@ -1,0 +1,163 @@
+.detailContainer {
+  width: 100%;
+  max-width: 900px;
+  margin: calc(var(--header-height) + 40px) auto 160px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.profileHeader {
+  display: flex;
+  gap: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.profileImgPlaceholder {
+  width: 140px;
+  height: 180px;
+  background: #e2e8f0;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.profileInfo h2 {
+  margin: 0 0 16px;
+  font-size: 24px;
+  color: #1a202c;
+}
+
+.profileInfo p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.profileInfo p span {
+  font-weight: bold;
+  display: inline-block;
+  width: 70px;
+  color: #718096;
+}
+
+/* Tabs */
+.tabNavbar {
+  display: flex;
+  gap: 16px;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+.tabItem {
+  padding: 12px 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #718096;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.activeTab {
+  color: #101423;
+  font-weight: bold;
+  border-bottom: 3px solid #101423;
+}
+
+/* 출연 작품 Grid */
+.worksGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.workCard {
+  display: flex;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.workCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.posterPlaceholder {
+  width: 75px;
+  height: 100px;
+  background: #cbd5e0;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.workInfo h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: #2d3748;
+}
+
+.genreTag {
+  font-size: 11px;
+  background: #edf2f7;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.workInfo p {
+  margin: 3px 0;
+  font-size: 12px;
+  color: #718096;
+}
+
+.roleText {
+  font-weight: bold;
+  color: #4a5568 !important;
+  margin-top: 6px !important;
+}
+
+.calendarWrapper {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.calendarWrapper > div > div:nth-child(3) > div {
+  min-height: 60px;
+}
+
+@media (max-width: 768px) {
+  .detailContainer {
+    margin-top: calc(var(--header-height) + 20px);
+  }
+  .profileHeader {
+    padding: 15px 18px;
+    margin-bottom: 16px;
+    gap: 14px;
+  }
+  .profileImgPlaceholder {
+    width: calc(140px * 0.57);
+    height: calc(180px * 0.57);
+  }
+  .profileInfo h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .profileInfo p {
+    font-size: 12px;
+  }
+  .profileInfo p span {
+    width: 50px;
+  }
+  .worksGrid {
+    grid-template-columns: 1fr;
+  }
+}

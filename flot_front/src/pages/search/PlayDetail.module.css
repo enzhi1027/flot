@@ -1,0 +1,168 @@
+.detailContainer {
+  width: 100%;
+  max-width: 900px;
+  margin: calc(var(--header-height) + 40px) auto 160px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.playHeader {
+  display: flex;
+  gap: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.posterMainPlaceholder {
+  width: 140px;
+  height: 180px;
+  background: #e2e8f0;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.playInfo h2 {
+  margin: 0 0 16px;
+  font-size: 24px;
+  color: #1a202c;
+}
+
+.playInfo p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.playInfo p span {
+  font-weight: bold;
+  display: inline-block;
+  width: 70px;
+  color: #718096;
+}
+
+/* Tabs */
+.tabNavbar {
+  display: flex;
+  gap: 16px;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+.tabItem {
+  padding: 12px 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #718096;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.activeTab {
+  color: #101423;
+  font-weight: bold;
+  border-bottom: 3px solid #101423;
+}
+
+/* 출연진 가로 배치 레이아웃 (4명 고정 배율 분할) */
+.castContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.roleGroupRow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.roleNameLabel {
+  font-size: 14px;
+  font-weight: bold;
+  color: #4a5568;
+  border-left: 3px solid #101423;
+  padding-left: 8px;
+}
+
+.actorGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.actorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.actorCard:hover .actorImgPlaceholder {
+  filter: brightness(0.85);
+}
+
+.actorImgPlaceholder {
+  width: 100%;
+  aspect-ratio: 3 / 3.8;
+  background: #cbd5e0;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: filter 0.2s ease;
+}
+
+.actorNameText {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.calendarWrapper {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.calendarWrapper > div > div:nth-child(3) > div {
+  min-height: 60px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detailContainer {
+    margin-top: calc(var(--header-height) + 20px);
+  }
+  .playHeader {
+    padding: 15px 18px;
+    margin-bottom: 16px;
+    gap: 14px;
+  }
+  .posterMainPlaceholder {
+    width: calc(140px * 0.65);
+    height: calc(180px * 0.7);
+  }
+  .playInfo h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .playInfo p {
+    font-size: 12px;
+  }
+  .playInfo p span {
+    width: 50px;
+  }
+  .actorGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

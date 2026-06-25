@@ -9,7 +9,7 @@ import {
   isSameMonth,
   isSameDay,
 } from "date-fns";
-import { getPersonColor } from "./mockData";
+import { getPersonColor } from "./calendarMockData";
 import styles from "./Calendar.module.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";

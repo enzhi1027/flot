@@ -6,7 +6,7 @@ import {
   favoriteShows,
   myFriends,
   getPersonColor,
-} from "../../components/calender/mockData";
+} from "../../components/calender/calendarMockData";
 import styles from "./CalendarMain.module.css";
 
 const CalendarMain = () => {

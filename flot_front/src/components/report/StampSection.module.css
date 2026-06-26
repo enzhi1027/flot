@@ -1,0 +1,193 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chartRow {
+  display: flex;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  gap: 24px;
+  align-items: center;
+}
+
+.chartRow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.showMeta {
+  min-width: 200px;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.showTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.summaryBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.highlight {
+  color: #e5a93c;
+  font-weight: 700;
+}
+
+.boardChartList {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  align-items: center;
+  -webkit-overflow-scrolling: touch;
+}
+
+.boardChartList::-webkit-scrollbar {
+  height: 5px;
+}
+.boardChartList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.boardChartList::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+.chartItem {
+  min-width: 110px;
+  background-color: #f7fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.completedItem {
+  background-color: #edf2f7;
+  border-color: #e2e8f0;
+  opacity: 0.55;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.boardIndex {
+  font-size: 11px;
+  font-weight: 700;
+  color: #718096;
+}
+
+.progressText {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.completedItem .progressText {
+  color: #718096;
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #4a5568;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.actionArea {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.addButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 2px dashed #ced4da;
+  border-radius: 12px;
+  width: 100%;
+  padding: 20px;
+  color: #868e96;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  background-color: #f1f3f5;
+  border-color: #868e96;
+  color: #343a40;
+}
+
+.plusIcon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .chartRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .showMeta {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .boardChartList {
+    width: 100%;
+  }
+}

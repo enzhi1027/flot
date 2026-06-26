@@ -1,5 +1,3 @@
-// calendarMockData.js
-
 export const myData = {
   profile: { id: "me", name: "나" },
   schedules: [
@@ -1071,7 +1069,7 @@ const hashCode = (str) => {
 export const getPersonColor = (id) => {
   if (id === "me") return { bg: "#475569", color: "#ffffff" };
   if (id === "actor1") return { bg: "#7c5a9e", color: "#ffffff" };
-  if (id === "actor2") return { bg: "#5275a1", color: "#ffffff" }; // 안재영 컬러 고정 적용 부분
+  if (id === "actor2") return { bg: "#5275a1", color: "#ffffff" };
   if (id === "actor3") return { bg: "#a6526d", color: "#ffffff" };
   if (id === "actor4") return { bg: "#4d724d", color: "#ffffff" };
 

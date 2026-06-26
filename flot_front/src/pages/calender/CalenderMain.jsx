@@ -12,7 +12,6 @@ import styles from "./CalendarMain.module.css";
 const CalendarMain = () => {
   const [activeTab, setActiveTab] = useState("mine");
 
-  // 1. 애배 다중 선택을 위해 배열 형태로 변경 (초기값 첫 번째 배우 선택)
   const [selectedActors, setSelectedActors] = useState([
     favoriteActors[0]?.id || "",
   ]);
@@ -25,7 +24,6 @@ const CalendarMain = () => {
     myFriends[0]?.id || "",
   ]);
 
-  // 애배 다중 토글 핸들러 (최소 1명 유지)
   const handleActorToggle = (id) => {
     setSelectedActors((prev) =>
       prev.includes(id)
@@ -57,7 +55,6 @@ const CalendarMain = () => {
       ownerId: "me",
     }));
   } else if (activeTab === "actor") {
-    // 2. 선택된 모든 배우의 스케줄을 루프 돌며 겹쳐보도록 합산
     favoriteActors.forEach((actor) => {
       if (selectedActors.includes(actor.id)) {
         currentDisplayData.push(
@@ -130,7 +127,6 @@ const CalendarMain = () => {
             <div
               className={`${styles.sidebarList} ${activeTab === "friend" ? styles.scrollableList : ""}`}
             >
-              {/* 애배 다중 선택 활성화 */}
               {activeTab === "actor" &&
                 favoriteActors.map((a) => (
                   <button
@@ -157,7 +153,6 @@ const CalendarMain = () => {
                   </button>
                 ))}
 
-              {/* 친구 목록: 지저분한 체크박스 input을 제거하고 button 타입의 액티브로 통일 */}
               {activeTab === "friend" &&
                 myFriends.map((f) => (
                   <button

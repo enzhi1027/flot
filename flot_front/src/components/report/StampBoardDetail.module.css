@@ -1,0 +1,621 @@
+.detailWrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--bg);
+}
+
+.headerArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.backButton {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray3);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.backButton:hover {
+  color: var(--gray1);
+}
+
+.titleInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.showTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gray1);
+  margin: 0;
+}
+
+.typeBadge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: var(--primary);
+  color: var(--gray8);
+}
+
+.ticketGridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.ticketCard {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--gray8);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  min-height: 260px;
+}
+
+.stampZone {
+  flex: 1.4;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--gray6);
+  border-right: none;
+  border-radius: 16px 0 0 16px;
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerRightActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.boardNumber {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray1);
+}
+
+.boardCount {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray3);
+}
+
+.editModeButton {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: var(--gray7);
+  border: 1px solid var(--gray6);
+  color: var(--gray2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.editModeButton:hover {
+  background-color: var(--gray6);
+  color: var(--gray1);
+}
+.editModeButton.activeEdit {
+  background-color: #ebf8ff;
+  border-color: #bee3f8;
+  color: #2b6cb0;
+}
+
+.puzzleBoardDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  background-color: var(--gray7);
+  padding: 8px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+.puzzleTile {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 calc(33.333% - 6px);
+  min-height: 80px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition:
+    opacity 0.2s ease,
+    transform 0.1s ease;
+}
+
+.puzzleTile:active {
+  transform: scale(0.97);
+}
+
+.tileNumber {
+  font-size: 16px;
+  font-weight: 800;
+  position: relative;
+  z-index: 3;
+  color: var(--gray8);
+  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.7);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tileDateTime {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  position: relative;
+  z-index: 3;
+  opacity: 1 !important;
+  pointer-events: none;
+}
+
+.stampDate {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.stampTime {
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.tileLocked {
+  background-color: var(--gray8);
+  border: 2px dashed var(--gray5);
+}
+.tileLocked .tileNumber {
+  color: var(--gray4);
+  text-shadow: none;
+}
+
+.tilePreview {
+  border: 2px dashed rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+}
+.tilePreview::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.tileStamped {
+  background-color: transparent;
+  border: 1px solid transparent;
+  opacity: 1;
+  animation: tilePop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.tileStamped .tileNumber {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+@media (min-width: 769px) {
+  .tileStamped:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 2;
+  }
+  .tileStamped:hover .tileNumber {
+    opacity: 1;
+    transform: scale(1);
+    color: var(--gray8);
+  }
+
+  .tilePreview:hover {
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  .tilePreview {
+    border: 2px dashed rgba(255, 255, 255, 0.8);
+  }
+  .tileStamped {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .tileStamped:active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+  }
+  .tileStamped:active .tileNumber {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1120px) {
+  .ticketGridContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .ticketCard {
+    flex-direction: column;
+  }
+  .ticketDivider {
+    width: 100%;
+    height: 1px;
+  }
+  .dashedLine {
+    width: 100%;
+    height: 0;
+    border-top: 2px dashed var(--gray6);
+    border-left: none;
+  }
+  .benefitZone {
+    border-left: 1px solid var(--gray6);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    padding: 20px 16px;
+  }
+  .stampZone {
+    border-right: 1px solid var(--gray6);
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
+  }
+}
+.imageControllerArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f9f9fb;
+  border: 1px solid var(--gray6);
+  padding: 12px 14px;
+  border-radius: 8px;
+  animation: slideDown 0.2s ease-out forwards;
+}
+
+.controllerRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.controllerRowHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controllerRow label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray2);
+}
+
+.changeImagePlaceholderBtn {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  background-color: var(--primary);
+  color: var(--gray8);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.changeImagePlaceholderBtn:hover {
+  opacity: 0.9;
+}
+
+.controllerRow input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.scaleHelpText {
+  font-size: 10px;
+  color: var(--gray4);
+  margin-top: -2px;
+}
+
+@keyframes tilePop {
+  0% {
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ticketDivider {
+  position: relative;
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--gray8);
+}
+.dashedLine {
+  height: 100%;
+  border-left: 2px dashed var(--gray6);
+}
+.notchTop,
+.notchBottom {
+  position: absolute;
+  width: 16px;
+  height: 8px;
+  background-color: var(--bg);
+  border: 1px solid var(--gray6);
+}
+.notchTop {
+  top: -1px;
+  border-radius: 0 0 8px 8px;
+  border-top: none;
+}
+.notchBottom {
+  bottom: -1px;
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+}
+
+.benefitZone {
+  flex: 0.8;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--gray6);
+  border-left: none;
+  border-radius: 0 16px 16px 0;
+  background-color: var(--gray8);
+}
+
+.benefitHeader {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--gray4);
+  margin-bottom: 4px;
+}
+
+.benefitItemList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.benefitGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.benefitRoundTitle {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.benefitGroupItems {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.benefitItemRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.benefitItemRow:hover {
+  background-color: var(--gray7);
+}
+
+.customCheckbox {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--gray5);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #ffffff;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.customCheckbox.checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.benefitLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray2);
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+.claimedRow .benefitLabel {
+  color: var(--gray4);
+  text-decoration: line-through;
+}
+
+.typeCoupon.unclaimed,
+.typeGoods.unclaimed {
+  color: var(--gray3);
+  background-color: var(--gray7);
+  border-color: var(--gray6);
+}
+.typeCoupon.unclaimed:hover,
+.typeGoods.unclaimed:hover {
+  background-color: var(--gray6);
+  color: var(--gray1);
+}
+.typeCoupon.claimed {
+  color: var(--gray8);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.typeCoupon.claimed:hover {
+  background-color: var(--gray1);
+  border-color: var(--gray1);
+}
+.typeGoods.claimed {
+  color: var(--gray1);
+  background-color: var(--gray8);
+  border-color: var(--primary);
+}
+.typeGoods.claimed:hover {
+  background-color: var(--gray7);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modalContent {
+  background-color: var(--gray8);
+  border-radius: 14px;
+  width: 340px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.modalHeader h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+}
+.closeModal {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--gray4);
+  cursor: pointer;
+}
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.inputGroup label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray3);
+  margin-bottom: 6px;
+}
+.inputGroup input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--gray6);
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: var(--gray1);
+}
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+}
+.rightActions {
+  display: flex;
+  gap: 8px;
+}
+.modalActions button {
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+.deleteButton {
+  background-color: #fff5f5;
+  color: #c53030;
+}
+.cancelButton {
+  background-color: var(--gray7);
+  color: var(--gray2);
+}
+.updateButton {
+  background-color: var(--primary);
+  color: var(--gray8);
+}

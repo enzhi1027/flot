@@ -72,7 +72,6 @@ const SearchPage = () => {
         onSearch={handleSearchSubmit}
       />
 
-      {/* 기본 화면 */}
       {viewMode === "default" && (
         <RecentSearches
           recentSearches={recentSearches}
@@ -84,15 +83,12 @@ const SearchPage = () => {
         />
       )}
 
-      {/* 결과 화면: 데이터 유무에 따른 조건부 렌더링 ⚙️ */}
       {viewMode === "result" && (
         <div className={styles.cardContainer}>
           {filteredShows.length === 0 && filteredActors.length === 0 ? (
-            /* 1번 요구사항: 둘 다 없을 때 */
             <div className={styles.noResult}>검색 결과가 없습니다.</div>
           ) : (
             <>
-              {/* 극 결과가 있을 때만 노출 */}
               {filteredShows.length > 0 && (
                 <ShowResultSection
                   shows={filteredShows.slice(0, 3)}
@@ -108,7 +104,6 @@ const SearchPage = () => {
                 <div style={{ marginTop: "32px" }} />
               )}
 
-              {/* 배우 결과가 있을 때만 노출 */}
               {filteredActors.length > 0 && (
                 <ActorResultSection
                   actors={filteredActors.slice(0, 4)}
@@ -124,7 +119,6 @@ const SearchPage = () => {
         </div>
       )}
 
-      {/* 더보기 화면 */}
       {(viewMode === "more_show" || viewMode === "more_actor") && (
         <div className={styles.cardContainer}>
           <div className={styles.tabHeaderSwitcher}>

@@ -8,13 +8,11 @@ import Calendar from "../../components/calender/Calendar";
 const ActorDetail = () => {
   const { actorName } = useParams();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("works"); // 'works' | 'schedule'
+  const [activeTab, setActiveTab] = useState("works");
 
-  // 1. 프로필 및 출연 작품 리스트 조회 (searchMockData 기반)
   const actorInfo =
     DUMMY_ACTORS.find((a) => a.name === actorName) || DUMMY_ACTORS[0];
 
-  // 2. 스케줄 탭을 위한 내 캘린더(favoriteActors) 데이터 연동
   const calendarActor = favoriteActors.find((a) => a.name.includes(actorName));
   const calendarData = calendarActor
     ? calendarActor.castings.map((c) => ({
@@ -27,11 +25,8 @@ const ActorDetail = () => {
 
   return (
     <div className={styles.detailContainer}>
-      {/* 배우 상단 프로필 영역 */}
       <div className={styles.profileHeader}>
-        <div className={styles.profileImgPlaceholder}>
-          {/* <img src="배우사진경로" alt={actorInfo?.name} /> */}
-        </div>
+        <div className={styles.profileImgPlaceholder}></div>
         <div className={styles.profileInfo}>
           <h2>{actorInfo?.name || actorName}</h2>
           <p>
@@ -46,7 +41,6 @@ const ActorDetail = () => {
         </div>
       </div>
 
-      {/* 내부 탭 메뉴 */}
       <div className={styles.tabNavbar}>
         <div
           className={`${styles.tabItem} ${activeTab === "works" ? styles.activeTab : ""}`}
@@ -62,7 +56,6 @@ const ActorDetail = () => {
         </div>
       </div>
 
-      {/* 탭 콘텐츠 바디 */}
       <div className={styles.contentBody}>
         {activeTab === "works" ? (
           <div className={styles.worksGrid}>
@@ -70,7 +63,6 @@ const ActorDetail = () => {
               <div
                 key={work.id}
                 className={styles.workCard}
-                // 기획된 라우터 규칙인 /search/plays/:playName/:season 형태로 이동
                 onClick={() =>
                   navigate(`/search/plays/${work.title}/${work.season}`)
                 }

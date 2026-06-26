@@ -69,7 +69,6 @@ export default function Calendar({ displayData = [], isPlayCalendar = false }) {
           const dateStr = format(day, "yyyy-MM-dd");
           const isCurrentMonth = isSameMonth(day, monthStart);
 
-          // 해당 날짜의 전체 스케줄을 시간 순서대로 정렬
           const dayItems = displayData
             .filter((item) => item.date === dateStr)
             .sort((a, b) => (a.time || "").localeCompare(b.time || ""));
@@ -88,7 +87,6 @@ export default function Calendar({ displayData = [], isPlayCalendar = false }) {
               <div className={styles.itemLayer}>
                 {dayItems.map((item, index) => {
                   if (isPlayCalendar) {
-                    // 각 회차 데이터에 들어있는 이벤트를 쉼표 기준으로 분리하여 그대로 사용 (중복 제거 제거)
                     const currentEvents = item.event
                       ? item.event
                           .split(/,\s*/)
@@ -98,7 +96,6 @@ export default function Calendar({ displayData = [], isPlayCalendar = false }) {
 
                     return (
                       <div key={index} className={styles.playItemBox}>
-                        {/* 해당 회차 고유의 이벤트를 회차 박스 바로 위에 정직하게 렌더링 */}
                         {currentEvents.length > 0 && (
                           <div className={styles.eventBadgeContainer}>
                             {currentEvents.map((evt, evtIdx) => (

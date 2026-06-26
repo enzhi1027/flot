@@ -7,6 +7,7 @@ import SearchPage from "./pages/search/SearchPage";
 import CalendarMain from "./pages/calender/CalenderMain";
 import ActorDetail from "./pages/search/ActorDetail";
 import PlayDetail from "./pages/search/PlayDetail";
+import ReportPage from "./pages/report/ReportPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             path="/search/plays/:playName/:season"
             element={<PlayDetail />}
           />
+          <Route path="/report" element={<ReportPage />} />
         </Routes>
       </div>
       <Footer />

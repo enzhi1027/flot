@@ -1,7 +1,7 @@
 .detailContainer {
   width: 100%;
   max-width: 900px;
-  margin: calc(var(--header-height) + 40px) auto 160px;
+  margin: calc(var(--header-height) + 20px) auto 160px;
   padding: 0 16px;
   box-sizing: border-box;
 }
@@ -43,7 +43,6 @@
   color: #718096;
 }
 
-/* Tabs */
 .tabNavbar {
   display: flex;
   gap: 16px;
@@ -67,7 +66,6 @@
   border-bottom: 3px solid #101423;
 }
 
-/* 출연진 가로 배치 레이아웃 (4명 고정 배율 분할) */
 .castContainer {
   display: flex;
   flex-direction: column;
@@ -138,7 +136,12 @@
   min-height: 60px;
 }
 
-/* Responsive */
+@media (max-width: 480px) {
+  .detailContainer {
+    margin: calc(var(--header-height) + 20px) auto 120px;
+    padding: 0 8px;
+  }
+}
 @media (max-width: 768px) {
   .detailContainer {
     margin-top: calc(var(--header-height) + 20px);

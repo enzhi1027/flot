@@ -60,12 +60,10 @@ const Header = () => {
         className={`${styles.header} ${isBgWhite ? styles.scrolled : ""}`}
       >
         <div className={styles.headerContainer}>
-          {/* 로고 */}
           <Link to="/" className={styles.logoLink} onClick={closeSidebar}>
             <img src={logo} alt="Flot Logo" className={styles.logoImg} />
           </Link>
 
-          {/* 햄버거 버튼 */}
           <button
             className={styles.hamburgerBtn}
             onClick={toggleSidebar}
@@ -81,7 +79,6 @@ const Header = () => {
         </div>
       </header>
 
-      {/* 사이드바 */}
       <aside
         className={`${styles.sidebar} ${
           isSidebarOpen ? styles.sidebarOpen : ""
@@ -206,7 +203,6 @@ const Header = () => {
         </nav>
       </aside>
 
-      {/* 오버레이 */}
       {isSidebarOpen && (
         <div className={styles.overlay} onClick={closeSidebar} />
       )}

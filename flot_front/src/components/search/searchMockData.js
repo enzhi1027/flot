@@ -1,5 +1,3 @@
-// searchMockData.js
-
 export const DUMMY_SHOWS = [
   {
     id: 1,
@@ -629,7 +627,6 @@ export const DUMMY_ACTORS = [
       },
     ],
   },
-  // 시데레우스 관련 인원
   {
     id: 19,
     name: "박민성",
@@ -714,8 +711,6 @@ export const DUMMY_ACTORS = [
       },
     ],
   },
-
-  // 브라더스 까라마조프 신규 충원 인원
   {
     id: 25,
     name: "도창선",

@@ -1,0 +1,111 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionRow {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.rowHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.rowTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.moreButton {
+  font-size: 14px;
+  color: var(--gray6);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.scrollContainer {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  position: relative;
+  flex: 0 0 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flagIcon {
+  position: absolute;
+  top: 0;
+  left: 15.3px;
+  width: 24px;
+  height: 32px;
+  background-color: var(--primary);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 80%, 0% 100%);
+  z-index: 2;
+}
+
+.cardThumbnail {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.placeholderIcon {
+  font-size: 24px;
+  opacity: 0.4;
+}
+
+.cardInfo {
+  text-align: center;
+  width: 100%;
+}
+
+.itemTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #495057;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+}
+
+.itemCount {
+  font-size: 11px;
+  color: #868e96;
+  margin: 0;
+}

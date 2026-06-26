@@ -43,7 +43,6 @@ const ActorResultSection = ({ actors, isMoreView, onMoreClick }) => {
                         <span className={styles.filmoTypeLabel}>
                           {w.type === 1 ? "뮤지컬" : "연극"}
                         </span>
-                        {/* 💡 요청 사항 3: 배역 제거 및 순수 작품명만 노출 */}
                         <span className={styles.filmoTitle}>{w.title}</span>
                       </div>
                       <StatusBadge period={w.period} />

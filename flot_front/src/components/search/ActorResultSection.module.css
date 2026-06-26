@@ -20,7 +20,6 @@
   cursor: pointer;
 }
 
-/* 💻 데스크톱 화면: 한줄에 4명씩 */
 .actorGridRow,
 .actorGridInfinite {
   display: grid;
@@ -89,16 +88,15 @@
   color: var(--primary);
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* 💥 겹치면 자동으로 ... 처리 */
+  text-overflow: ellipsis;
   width: 100%;
 }
 
-/* 💡 [해결 책] StatusBadge 컴포넌트 내부의 CSS 클래스를 안전하게 주입 및 고정 */
 .filmoRow [class*="statusBadge"] {
   position: relative !important;
   top: auto !important;
   right: auto !important;
-  flex-shrink: 0 !important; /* 글자가 길어져도 절대 찌그러지거나 숨지 않음 */
+  flex-shrink: 0 !important;
   display: inline-block;
   text-align: center;
 }
@@ -111,7 +109,6 @@
   margin-top: 16px;
 }
 
-/* 📱 반응형(모바일) 화면: 한줄에 한명씩 리스트처럼 */
 @media (max-width: 768px) {
   .actorGridRow,
   .actorGridInfinite {

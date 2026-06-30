@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Main from "./pages/main/Main";
 import Header from "./components/commons/Header";
@@ -8,6 +8,29 @@ import CalendarMain from "./pages/calender/CalenderMain";
 import ActorDetail from "./pages/search/ActorDetail";
 import PlayDetail from "./pages/search/PlayDetail";
 import ReportPage from "./pages/report/ReportPage";
+import { useEffect } from "react";
+
+const NotFound = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    alert("잘못된 접근입니다. 메인 페이지로 이동합니다! ↩️");
+    navigate("/", { replace: true });
+  }, [navigate]);
+
+  return null;
+};
+
+const UnderConstruction = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    alert("해당 기능은 아직 준비 중입니다! 메인 페이지로 이동합니다. 🎬");
+    navigate("/", { replace: true });
+  }, [navigate]);
+
+  return null;
+};
 
 function App() {
   return (
@@ -25,6 +48,12 @@ function App() {
             element={<PlayDetail />}
           />
           <Route path="/report" element={<ReportPage />} />
+
+          <Route path="/trade" element={<UnderConstruction />} />
+          <Route path="/seeya" element={<UnderConstruction />} />
+          <Route path="/ticketing-practice" element={<UnderConstruction />} />
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <Footer />

@@ -4,21 +4,27 @@
   background-color: var(--gray8);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  box-shadow:
+    0 4px 16px rgba(15, 23, 42, 0.04),
+    0 1px 2px rgba(15, 23, 42, 0.02);
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.showCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+@media (min-width: 769px) {
+  .showCard:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 12px 24px -4px rgba(15, 23, 42, 0.1),
+      0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  }
 }
 
 .posterWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   background-color: var(--gray6);
 }
 
@@ -26,50 +32,89 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .seatBadge {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  background-color: rgba(16, 20, 35, 0.85);
+  background-color: rgba(15, 23, 42, 0.8);
   color: var(--gray8);
-  padding: 6px 12px;
+  padding: 5px 10px;
   border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  backdrop-filter: blur(4px);
+  font-size: 0.78rem;
+  font-weight: 600;
+  backdrop-filter: blur(6px);
+  letter-spacing: -0.2px;
 }
 
 .showInfo {
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .showTitle {
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--primary);
-  margin-bottom: 6px;
+  margin: 0 0 2px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: -0.3px;
 }
 
 .showDetail {
   font-size: 0.85rem;
+  font-weight: 500;
   color: var(--gray2);
-  margin-bottom: 2px;
 }
 
 .showDate {
   font-size: 0.8rem;
   color: var(--gray4);
+  margin-top: 2px;
 }
 
 .myDateText {
   display: flex;
   align-items: center;
+  gap: 1px;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--gray2);
+}
+
+@media (max-width: 768px) {
+  .showInfo {
+    padding: 12px;
+    gap: 3px;
+  }
+
+  .showTitle {
+    font-size: 0.82rem;
+  }
+
+  .showDetail {
+    font-size: 0.67rem;
+  }
+
+  .showDate {
+    font-size: 0.57rem;
+  }
+
+  .myDateText {
+    font-size: 0.67rem;
+  }
+
+  .seatBadge {
+    bottom: 8px;
+    left: 8px;
+    padding: 3px 5px;
+    font-size: 0.65rem;
+    border-radius: 4px;
+  }
 }

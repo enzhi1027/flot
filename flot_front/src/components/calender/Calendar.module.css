@@ -2,37 +2,49 @@
   width: 100%;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
+
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  border-bottom: 1px solid #edf2f7;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #edf2f7;
 }
+
 .navArrow {
   background: none;
   border: none;
-  transform: scale(0.75);
+  transform: scale(0.85);
   cursor: pointer;
   color: #4a5568;
   display: flex;
   justify-content: center;
+  transition: color 0.2s;
 }
+
+.navArrow:hover {
+  color: #1a202c;
+}
+
 .title {
-  font-weight: bold;
-  font-size: 16px;
-  align-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: #1a202c;
+  min-width: 120px;
+  text-align: center;
 }
+
 .weekHeader {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   background: #f7fafc;
   border-bottom: 1px solid #edf2f7;
 }
+
 .weekCell {
   text-align: center;
   padding: 10px 0;
@@ -40,6 +52,7 @@
   font-weight: 600;
   color: #718096;
 }
+
 .sun {
   color: #e53e3e;
 }
@@ -51,6 +64,7 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   background: #edf2f7;
+  gap: 1px;
 }
 
 .dayCell {
@@ -59,33 +73,49 @@
   flex-direction: column;
   gap: 4px;
   overflow: hidden;
-  padding: 0px 1.2px;
+  padding: 4px 2px;
+  min-height: 100px;
+  cursor: pointer;
+  transition: background-color 0.15s;
 }
+
+.dayCell:hover {
+  background-color: #f8fafc;
+}
+
 .otherMonth {
   opacity: 0.35;
 }
+
 .dayNum {
   font-size: 11px;
   font-weight: bold;
   height: 24px;
-  align-content: center;
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+  color: #4a5568;
 }
+
 .today {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--gray8);
-  background-color: var(--primary);
-  width: 24px;
+  color: #ffffff;
+  background-color: #4f46e5;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   font-size: 11px;
   font-weight: bold;
 }
+
 .itemLayer {
   display: flex;
   flex-direction: column;
   gap: 3px;
   overflow: hidden;
+  padding: 2px 0;
 }
 
 .playItemBox {
@@ -93,6 +123,7 @@
   flex-direction: column;
   gap: 1px;
   overflow: hidden;
+  padding: 2px;
 }
 
 .eventBadgeContainer {
@@ -107,42 +138,44 @@
   color: #924351;
   font-size: 8px;
   font-weight: bold;
-  padding: 1px 2px;
-  border-radius: 2px;
+  padding: 1px 4px;
+  border-radius: 3px;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  box-sizing: border-box;
 }
+
 .playCastRow {
   font-size: 10px;
   display: flex;
   flex-direction: column;
   line-height: 1.2;
   overflow: hidden;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
+
 .playTime {
   font-weight: bold;
   color: #2d3748;
 }
+
 .playActors {
   color: #718096;
-  padding-left: 4px;
-
+  padding-left: 2px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-
   white-space: normal;
   word-break: keep-all;
   line-height: 1.25;
 }
 
 .cleanBlockBadge {
-  padding: 2px 3px;
+  padding: 3px 5px;
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -150,38 +183,44 @@
   display: flex;
   flex-direction: column;
   gap: 1px;
+  transition: transform 0.15s;
+}
+
+.cleanBlockBadge:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.95);
 }
 
 .cleanBlockTime {
   font-size: 9px;
   font-weight: 600;
   display: block;
+  opacity: 0.85;
 }
 
 .blockTitle {
   font-size: 9px;
-  font-weight: 500;
-  letter-spacing: -0.5px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal !important;
   word-break: break-word;
-
   line-height: 1.2;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .pendingItem {
-  opacity: 0.45;
-  border: 1px dashed rgba(255, 255, 255, 0.6);
+  opacity: 0.55;
+  border: 1px dashed rgba(0, 0, 0, 0.15);
 }
+
 .pendingTag {
-  color: #ff6b6b;
+  color: #e53e3e;
   font-weight: bold;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 .modalOverlay {
@@ -190,76 +229,259 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
 }
+
 .modalContent {
-  background: #fff;
+  background: #ffffff;
   width: 100%;
-  max-width: 360px;
-  border-radius: 10px;
-  padding: 20px;
+  max-width: 440px;
+  border-radius: 16px;
+  padding: 28px;
+  box-sizing: border-box;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: slideUp 0.25s ease-out;
 }
+
 .modalTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
 }
+
 .modalDateInfo {
-  font-size: 11px;
-  color: #a0aec0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.3px;
 }
+
 .closeX {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
-  color: #a0aec0;
+  color: #94a3b8;
+  transition: color 0.2s;
+  line-height: 1;
 }
+
+.closeX:hover {
+  color: #334155;
+}
+
 .modalMainTitle {
-  font-size: 15px;
-  font-weight: bold;
-  color: #1a202c;
-  margin: 6px 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 4px 0 16px 0;
+  line-height: 1.4;
+  word-break: keep-all;
 }
+
+.modalInputTitle {
+  width: 100%;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 4px 0 8px 0;
+  margin: 4px 0 16px 0;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.modalInputTitle:focus {
+  border-bottom-color: #4f46e5;
+}
+
 .modalContent hr {
   border: none;
   height: 1px;
-  background: #e2e8f0;
-  margin-bottom: 12px;
+  background: #f1f5f9;
+  margin-bottom: 20px;
 }
+
 .modalTable {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-size: 12px;
+  gap: 14px;
 }
+
 .modalRow {
   display: flex;
-  align-items: flex-start;
-  padding-bottom: 4px;
+  align-items: center;
+  min-height: 32px;
 }
+
 .fixedKey {
-  width: 60px;
-  color: #718096;
+  width: 80px;
+  color: #64748b;
+  font-size: 14px;
   font-weight: 500;
   flex-shrink: 0;
 }
+
 .modalRow strong {
-  color: #2d3748;
+  color: #1e293b;
+  font-size: 14px;
   font-weight: 600;
   flex: 1;
   word-break: break-all;
 }
+
+.inlineInput {
+  flex: 1;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #334155;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.inlineInput:focus {
+  background-color: #ffffff;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.modalTextarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  color: #334155;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.modalTextarea:focus {
+  background-color: #ffffff;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #475569;
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
 .memoText {
   flex: 1;
-  background: #f7fafc;
-  padding: 6px;
-  border-radius: 4px;
-  color: #4a5568;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  padding: 12px;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 14px;
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.modalFooter {
+  display: flex;
+  gap: 8px;
+  margin-top: 28px;
+  justify-content: flex-end;
+}
+
+.modalFooter button {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.editBtn {
+  background-color: #4f46e5;
+  color: #ffffff;
+  width: 100%;
+}
+
+.editBtn:hover {
+  background-color: #4338ca;
+  transform: translateY(-1px);
+}
+
+.saveBtn {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.saveBtn:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+}
+
+.cancelBtn {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.cancelBtn:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.modalFooter:has(.cancelBtn) .saveBtn {
+  flex: 2;
+}
+.modalFooter:has(.cancelBtn) .cancelBtn {
+  flex: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

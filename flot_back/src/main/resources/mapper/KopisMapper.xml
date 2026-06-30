@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.performance.flot.domain.main.mapper.KopisMapper">
+
+    <insert id="upsertFacility">
+        INSERT INTO theater_facility (
+            mt10id, fcltynm, mt13cnt, seatscale, telno, relateurl, adres, la, lo
+        ) VALUES (
+                     #{mt10id}, #{fcltynm}, #{mt13cnt}, #{seatscale}, #{telno}, #{relateurl}, #{adres}, #{la}, #{lo}
+                 )
+            ON DUPLICATE KEY UPDATE
+                                 fcltynm   = VALUES(fcltynm),
+                                 mt13cnt   = VALUES(mt13cnt),
+                                 seatscale = VALUES(seatscale),
+                                 telno     = VALUES(telno),
+                                 relateurl = VALUES(relateurl),
+                                 adres     = VALUES(adres),
+                                 la        = VALUES(la),
+                                 lo        = VALUES(lo),
+                                 updated_at = CURRENT_TIMESTAMP
+    </insert>
+
+    <insert id="upsertPerformance">
+        INSERT INTO performance (
+            mt20id, prfnm, mt10id, prfpdfrom, prfpdto, prfcast, prfruntime,
+            prfage, pcseguidance, poster, sty, genrenm, updatedate, prfstate, dtguidance
+        ) VALUES (
+                     #{mt20id}, #{prfnm}, #{mt10id}, #{prfpdfrom}, #{prfpdto}, #{prfcast}, #{prfruntime},
+                     #{prfage}, #{pcseguidance}, #{poster}, #{sty}, #{genrenm}, #{updatedate}, #{prfstate}, #{dtguidance}
+                 )
+            ON DUPLICATE KEY UPDATE
+                                 prfnm        = VALUES(prfnm),
+                                 mt10id       = VALUES(mt10id),
+                                 prfpdfrom    = VALUES(prfpdfrom),
+                                 prfpdto      = VALUES(prfpdto),
+                                 prfcast      = VALUES(prfcast),
+                                 prfruntime   = VALUES(prfruntime),
+                                 prfage       = VALUES(prfage),
+                                 pcseguidance = VALUES(pcseguidance),
+                                 poster       = VALUES(poster),
+                                 sty          = VALUES(sty),
+                                 genrenm      = VALUES(genrenm),
+                                 updatedate   = VALUES(updatedate),
+                                 prfstate     = VALUES(prfstate),
+                                 dtguidance   = VALUES(dtguidance),
+                                 updated_at   = CURRENT_TIMESTAMP
+    </insert>
+
+    <delete id="deletePerformanceStyurls">
+        DELETE FROM performance_styurl WHERE mt20id = #{mt20id}
+    </delete>
+
+    <insert id="insertPerformanceStyurl">
+        INSERT INTO performance_styurl (mt20id, styurl)
+        VALUES (#{mt20id}, #{styurl})
+    </insert>
+
+    <delete id="deletePerformanceRelates">
+        DELETE FROM performance_relate WHERE mt20id = #{mt20id}
+    </delete>
+
+    <insert id="insertPerformanceRelate">
+        INSERT INTO performance_relate (mt20id, relatenm, relateurl)
+        VALUES (#{mt20id}, #{relatenm}, #{relateurl})
+    </insert>
+
+</mapper>

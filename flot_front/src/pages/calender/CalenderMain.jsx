@@ -8,21 +8,25 @@ import {
   getPersonColor,
 } from "../../components/calender/calendarMockData";
 import styles from "./CalendarMain.module.css";
+import AddIcon from "@mui/icons-material/Add";
 
 const CalendarMain = () => {
   const [activeTab, setActiveTab] = useState("mine");
+
+  const [mySchedules, setMySchedules] = useState(myData.schedules);
 
   const [selectedActors, setSelectedActors] = useState([
     favoriteActors[0]?.id || "",
   ]);
   const [selectedShow, setSelectedShow] = useState(favoriteShows[0]?.id || "");
-
   const [showMyScheduleWithFriend, setShowMyScheduleWithFriend] =
     useState(false);
-
   const [friendMixSelected, setFriendMixSelected] = useState([
     myFriends[0]?.id || "",
   ]);
+
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [selectedDateForAdd, setSelectedDateForAdd] = useState("");
 
   const handleActorToggle = (id) => {
     setSelectedActors((prev) =>
@@ -46,10 +50,28 @@ const CalendarMain = () => {
     );
   };
 
+  const handleAddSchedule = (newSchedule) => {
+    setMySchedules((prev) => [
+      ...prev,
+      { ...newSchedule, id: Date.now().toString() },
+    ]);
+  };
+
+  const handleUpdateSchedule = (updatedSchedule) => {
+    setMySchedules((prev) =>
+      prev.map((s) => (s.id === updatedSchedule.id ? updatedSchedule : s)),
+    );
+  };
+
+  const handleOpenAddModal = (dateStr) => {
+    setSelectedDateForAdd(dateStr || new Date().toISOString().split("T")[0]);
+    setIsAddModalOpen(true);
+  };
+
   let currentDisplayData = [];
 
   if (activeTab === "mine") {
-    currentDisplayData = myData.schedules.map((s) => ({
+    currentDisplayData = mySchedules.map((s) => ({
       ...s,
       dataType: "personal",
       ownerId: "me",
@@ -70,7 +92,7 @@ const CalendarMain = () => {
   } else if (activeTab === "friend") {
     if (showMyScheduleWithFriend) {
       currentDisplayData.push(
-        ...myData.schedules.map((s) => ({
+        ...mySchedules.map((s) => ({
           ...s,
           dataType: "personal",
           ownerId: "me",
@@ -98,21 +120,32 @@ const CalendarMain = () => {
 
   return (
     <div className={styles.calendarMainContainer}>
-      <div className={styles.tabNavbar}>
-        {[
-          { id: "mine", label: "MY" },
-          { id: "show", label: "애정극" },
-          { id: "actor", label: "애배" },
-          { id: "friend", label: "친구" },
-        ].map((tab) => (
-          <div
-            key={tab.id}
-            className={`${styles.tabItem} ${activeTab === tab.id ? styles.activeTab : ""}`}
-            onClick={() => setActiveTab(tab.id)}
+      <div className={styles.topMenuBar}>
+        <div className={styles.tabNavbar}>
+          {[
+            { id: "mine", label: "MY" },
+            { id: "show", label: "애정극" },
+            { id: "actor", label: "애배" },
+            { id: "friend", label: "친구" },
+          ].map((tab) => (
+            <div
+              key={tab.id}
+              className={`${styles.tabItem} ${activeTab === tab.id ? styles.activeTab : ""}`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.label}
+            </div>
+          ))}
+        </div>
+        {activeTab === "mine" && (
+          <button
+            className={styles.addScheduleMainBtn}
+            onClick={() => handleOpenAddModal("")}
           >
-            {tab.label}
-          </div>
-        ))}
+            <AddIcon style={{ fontSize: "16px", color: "inherit" }} />
+            나의 새 일정 등록
+          </button>
+        )}
       </div>
 
       <div className={styles.contentBody}>
@@ -190,6 +223,14 @@ const CalendarMain = () => {
           <Calendar
             isPlayCalendar={activeTab === "show"}
             displayData={currentDisplayData}
+            onDateClick={handleOpenAddModal}
+            onUpdateSchedule={handleUpdateSchedule}
+            onAddSchedule={handleAddSchedule}
+            isAddModalOpen={isAddModalOpen}
+            setIsAddModalOpen={setIsAddModalOpen}
+            selectedDateForAdd={selectedDateForAdd}
+            setSelectedDateForAdd={setSelectedDateForAdd}
+            activeTab={activeTab}
           />
         </div>
       </div>

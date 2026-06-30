@@ -280,3 +280,49 @@
     font-size: 14px;
   }
 }
+
+.topMenuBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.tabNavbar {
+  display: flex;
+  gap: 8px;
+  border-bottom: none;
+  margin-bottom: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.addScheduleMainBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 14px;
+  background-color: #3b597c;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.addScheduleMainBtn:hover {
+  background-color: #2c425d;
+}
+
+.addScheduleMainBtn:active {
+  transform: scale(0.98);
+}
+
+.addScheduleMainBtn svg path {
+  color: white;
+}

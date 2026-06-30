@@ -429,4 +429,13 @@
   .timelineEventBadge {
     margin-right: 6px;
   }
+
+  .filterChips {
+    gap: 5px;
+  }
+
+  .filterChip {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
 }

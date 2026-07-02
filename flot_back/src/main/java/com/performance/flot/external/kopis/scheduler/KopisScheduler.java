@@ -17,7 +17,7 @@ public class KopisScheduler implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("🚀 [테스트] 서버 기동 즉시 Kopis 동기화를 1회 수행합니다.");
-        performanceSyncService.syncKopisDataByPeriod("20250701", "20251231");
+        performanceSyncService.syncKopisDataByPeriod("20200101", "20200630");
         log.info("🚀 [마이그레이션] 해당 연도 작업이 끝났습니다. 애플리케이션을 종료하거나 다음 연도를 준비하세요.");
     }
 
